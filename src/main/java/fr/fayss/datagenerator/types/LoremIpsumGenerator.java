@@ -15,7 +15,7 @@ import lombok.Setter;
  * @author fayss
  *
  */
-public @Getter @Setter class LoremIpsumGenerator implements DataGenerator {
+public @Getter @Setter class LoremIpsumGenerator implements DataGenerator <String>{
 
 
 	/**
@@ -47,7 +47,7 @@ public @Getter @Setter class LoremIpsumGenerator implements DataGenerator {
 
 
 	@Override
-	public Object generate() throws GenerationException {
+	public String generate() throws GenerationException {
 
 		if (getUseParagraph()){
 

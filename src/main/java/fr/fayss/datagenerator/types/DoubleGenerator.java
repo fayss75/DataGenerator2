@@ -17,7 +17,7 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * 
  * @author fayss
  */
-public @Getter @Setter class DoubleGenerator implements DataGenerator {
+public @Getter @Setter class DoubleGenerator implements DataGenerator <Double>{
 
 	/**
 	 * Define the minimum value that can be generated
@@ -38,7 +38,7 @@ public @Getter @Setter class DoubleGenerator implements DataGenerator {
 	private Integer mScale = 2 ;
 	
 	@Override
-	public Object generate() {
+	public Double generate() {
 		
 		Double result = RandomUtils.nextDouble(getStartInclusive(), getEndInclusive());
 		return new BigDecimal(result).setScale(getScale(), RoundingMode.HALF_UP).doubleValue();

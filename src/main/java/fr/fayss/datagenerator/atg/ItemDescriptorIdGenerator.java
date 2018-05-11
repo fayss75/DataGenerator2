@@ -3,9 +3,14 @@
  */
 package fr.fayss.datagenerator.atg;
 
+import fr.fayss.datagenerator.DataConfiguration;
+import fr.fayss.datagenerator.DataConfigurationTools;
+import fr.fayss.datagenerator.DataGenerator;
+import fr.fayss.datagenerator.PropertyConfigurationException;
 import lombok.Getter;
 import lombok.Setter;
 import fr.fayss.datagenerator.types.IntegerGenerator;
+import org.apache.commons.lang3.RandomUtils;
 
 /**
  * Generate a repositoryId
@@ -13,7 +18,7 @@ import fr.fayss.datagenerator.types.IntegerGenerator;
  * @author fayss
  *
  */
-public @Getter @Setter class ItemDescriptorIdGenerator extends IntegerGenerator {
+public @Getter @Setter class ItemDescriptorIdGenerator implements DataGenerator<String> {
 	
 	/** Define the prefix of the generated id */
 	private String mPrefix="";
@@ -21,10 +26,50 @@ public @Getter @Setter class ItemDescriptorIdGenerator extends IntegerGenerator 
 	/** Define the suffix of the generated id */
 	private String mSuffix="";
 
+
+	/**
+	 * Define the minimum value that can be generated
+	 * Default value is 1000
+	 */
+	private Integer mStartInclusive = 1000;
+
+	/**
+	 * Define the maximu value that can be generated
+	 * Default value is 9000
+	 */
+	private Integer mEndInclusive = 9000;
+
+
+	public Integer generateNum() {
+		return RandomUtils.nextInt(getStartInclusive(), getEndInclusive());
+	}
+
+
 	@Override
-	public Object generate() {
+	public void configure(DataConfiguration pDataconfig) throws PropertyConfigurationException {
+
+		DataConfigurationTools.configure(this, pDataconfig);
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.fayss.datagenerator.DataGenerator#isConfigured()
+	 */
+	@Override
+	public boolean isConfigured() {
+		return getStartInclusive() != null &&
+				getEndInclusive() != null &&
+				getStartInclusive() < getEndInclusive();
+	}
+
+	@Override
+	public String generate() {
 		StringBuilder builder = new StringBuilder() ;
-		return builder.append(getPrefix()).append(super.generate()).append(getSuffix()).toString();
+
+
+		return builder.append(getPrefix())
+				.append(generateNum())
+				.append(getSuffix())
+				.toString();
 	}
 
 

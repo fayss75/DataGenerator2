@@ -11,9 +11,9 @@ import fr.fayss.datagenerator.types.IntegerGenerator;
  * @author fayss
  *
  */
-public @Getter @Setter class IntegerColumnGenerator extends IntegerGenerator implements ColumnGenerator {
+public @Getter @Setter class IntegerColumnGenerator extends IntegerGenerator implements ColumnGenerator <Integer>{
 	
-	private Object mValue;
+	private Integer mValue;
 	private String mColumnName  ;
 
 	public IntegerColumnGenerator () {
@@ -25,7 +25,7 @@ public @Getter @Setter class IntegerColumnGenerator extends IntegerGenerator imp
 	}
 
 	@Override
-	public Object generate() {
+	public Integer generate() {
 		if (mValue  == null) {
 			return super.generate();
 		} else {

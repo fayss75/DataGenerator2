@@ -19,7 +19,7 @@ import fr.fayss.datagenerator.PropertyValueException;
  * @author fayss
  *
  */
-public class ComplexCollectionGenerator implements CollectionGenerator{
+public class ComplexCollectionGenerator implements CollectionGenerator <String>{
 
 	/**  Define the collection of data generator */
 	private @Getter @Setter Collection<DataGenerator> mDataList ;
@@ -42,7 +42,7 @@ public class ComplexCollectionGenerator implements CollectionGenerator{
 	}
 
 	@Override
-	public Object generate() {
+	public String generate() {
 		
 		
 		if( mDataList == null){

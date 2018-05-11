@@ -15,7 +15,7 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * 
  * @author fayss
  */
-public @Getter @Setter class StringGenerator implements DataGenerator{
+public @Getter @Setter class StringGenerator implements DataGenerator <String>{
 
 	/** 
 	 * Define the length of the generated string 
@@ -37,7 +37,7 @@ public @Getter @Setter class StringGenerator implements DataGenerator{
 
 	
 	@Override
-	public Object generate() {
+	public String generate() {
 		StringBuilder sb = new StringBuilder();
 		return sb.append(getPrefix()).
 				append(RandomStringUtils.random(getStringLength(),true,false)).

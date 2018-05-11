@@ -8,14 +8,14 @@ package fr.fayss.datagenerator;
  * @author fayss
  *
  */
-public interface DataGenerator {
+public interface DataGenerator <T>{
 
 	/** Returns the generated data 
 	 * this method should call the method isGeneratorConfigured () before 
 	 * generating any data.
 	 * @throws GenerationException  if there is any error during the generation
 	 * */
-	public Object generate() throws GenerationException;
+	public T generate() throws GenerationException;
 	
 	/**
 	 * Configure properties of the data generator

@@ -19,7 +19,7 @@ package fr.fayss.datagenerator;
  * @author fayss
  *
  */
-public interface DataFormatter extends DataGenerator {
+public interface DataFormatter <T> extends DataGenerator <T>{
 	
 	
 	public static final String VALUE_PROP = "value";
@@ -27,12 +27,12 @@ public interface DataFormatter extends DataGenerator {
 	/**
 	 * @return value property
 	 */
-	public Object getValue();
+	public T getValue();
 	
 	/**
 	 * Set the value
 	 * @param pValue 
 	 */
-	public void setValue(Object pValue);
+	public void setValue(T pValue);
 
 }

@@ -30,7 +30,7 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * @author fayss
  *
  */
-public @Getter @Setter class RepositoryItemGenerator implements DataFormatter{
+public @Getter @Setter class RepositoryItemGenerator  implements DataFormatter <String>{
 	
 	
 	/** Define the default Class to use for id generation if idgenerator and value properties are not defined */
@@ -56,7 +56,7 @@ public @Getter @Setter class RepositoryItemGenerator implements DataFormatter{
 	 * Define the value of the repository id. 
 	 * If mValue is not null , ignore the idGenerator property
 	 */
-	private Object mValue = null;
+	private String mValue = null;
 
 
 	/**
@@ -97,7 +97,7 @@ public @Getter @Setter class RepositoryItemGenerator implements DataFormatter{
 	
 	
 	@Override
-	public Object generate() {
+	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
 

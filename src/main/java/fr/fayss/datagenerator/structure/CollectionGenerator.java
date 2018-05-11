@@ -10,7 +10,7 @@ import fr.fayss.datagenerator.DataGenerator;
  * 
  * @author fayss
  */
-public interface CollectionGenerator  extends DataGenerator {
+public interface CollectionGenerator <T> extends DataGenerator<T> {
 	
 	/**
 	 * @return the separator value

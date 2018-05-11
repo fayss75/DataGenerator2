@@ -9,9 +9,9 @@ import fr.fayss.datagenerator.types.StringGenerator;
  *
  */
 public  @Getter @Setter class VarcharGenerator extends StringGenerator implements
-		ColumnGenerator {
+		ColumnGenerator <String>{
 	
-	private Object mValue;
+	private String mValue;
 	
 	private String mColumnName  ;
 	
@@ -31,7 +31,7 @@ public  @Getter @Setter class VarcharGenerator extends StringGenerator implement
 	
 	
 	@Override
-	public Object generate() {
+	public String generate() {
 		if (getValue() == null) {
 			return getQuote() + super.generate() + getQuote() ;
 		} else {

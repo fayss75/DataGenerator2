@@ -18,7 +18,7 @@ import fr.fayss.datagenerator.types.StringGenerator;
  * @author fayss
  *
  */
-public @Getter @Setter class PropertyGenerator implements DataFormatter{
+public @Getter @Setter class PropertyGenerator implements DataFormatter <String>{
 
 	/** Define the default Class to use for data generatrion if mDataTypeGenerator and value properties are not defined */
 	private static final Class<? extends DataGenerator> DEFAULT_DATAGENERATOR = StringGenerator.class;
@@ -36,7 +36,7 @@ public @Getter @Setter class PropertyGenerator implements DataFormatter{
 	 * Define the value of the property. 
 	 * If mValue is not null , ignore the mDataTypeGenerator property
 	 */
-	private Object mValue = null;
+	private String mValue = null;
 
 
 	/**
@@ -72,7 +72,7 @@ public @Getter @Setter class PropertyGenerator implements DataFormatter{
 
 
 	@Override
-	public Object generate() {
+	public String generate() {
 		
 		Object result ;
 		

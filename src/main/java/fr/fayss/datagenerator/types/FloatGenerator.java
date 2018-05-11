@@ -18,7 +18,7 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * 
  * @author fayss
  */
-public @Getter @Setter class FloatGenerator implements DataGenerator {
+public @Getter @Setter class FloatGenerator implements DataGenerator <Float>{
 	
 	/**
 	 * Define the minimum value that can be generated
@@ -39,7 +39,7 @@ public @Getter @Setter class FloatGenerator implements DataGenerator {
 	private Integer mScale = 2 ;
 
 	@Override
-	public Object generate() {
+	public Float generate() {
 		
 		Float result =  RandomUtils.nextFloat(getStartInclusive(), getEndInclusive());
 		return new BigDecimal(result).setScale(getScale(), RoundingMode.HALF_UP).floatValue();

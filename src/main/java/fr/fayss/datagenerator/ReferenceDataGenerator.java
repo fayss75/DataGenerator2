@@ -7,7 +7,7 @@ package fr.fayss.datagenerator;
  * @author fayss
  *
  */
-public interface ReferenceDataGenerator extends DataGenerator{
+public interface ReferenceDataGenerator <T> extends DataGenerator <T>{
 	
 	
 	public DataGenerator getReferenceIdGenerator();

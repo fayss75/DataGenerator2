@@ -25,7 +25,7 @@ import fr.fayss.datagenerator.PropertyValueException;
  * 		("stringValue3", 14, 489);
  *
  */
-public @Getter @Setter class  InsertSQLGenerator implements DataGenerator {
+public @Getter @Setter class  InsertSQLGenerator implements DataGenerator<String> {
 
 	private String mTableName ;
 	
@@ -35,7 +35,7 @@ public @Getter @Setter class  InsertSQLGenerator implements DataGenerator {
 	private List <ColumnGenerator> mColumnGenerators ;
 
 	@Override
-	public Object generate() {
+	public String generate() {
 
 		StringBuilder sb = new StringBuilder ();
 

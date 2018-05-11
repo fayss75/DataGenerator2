@@ -111,7 +111,7 @@ public @Getter @Setter class TreeRepositoryItemGenerator extends RepositoryItemG
 	}
 
 	@Override
-	public Object generate() {
+	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
 

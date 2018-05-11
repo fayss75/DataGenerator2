@@ -18,7 +18,7 @@ import fr.fayss.datagenerator.PropertyValueException;
  * @author fayss
  *
  */
-public  @Getter @Setter class SimpleCollectionGenerator  implements CollectionGenerator {
+public  @Getter @Setter class SimpleCollectionGenerator  implements CollectionGenerator<String> {
 	
 	/** 
 	 * define the quantity of generated datas
@@ -60,7 +60,7 @@ public  @Getter @Setter class SimpleCollectionGenerator  implements CollectionGe
 
 
 	@Override
-	public Object generate() {
+	public String generate() {
 		
 		if (getQuantity() <= 0){
 			throw new PropertyValueException("Quantity must be a positive value, actual value:" + getQuantity());

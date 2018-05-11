@@ -8,7 +8,7 @@ import fr.fayss.datagenerator.GenerationBuffer;
 import fr.fayss.datagenerator.PropertyConfigurationException;
 import fr.fayss.datagenerator.ReferenceDataGenerator;
 
-public @Getter @Setter class TreeGenerator implements DataGenerator {
+public @Getter @Setter class TreeGenerator implements DataGenerator<String> {
 
 	public static final String DATA_KEY_PREFIX = "TreeGenerator" ;
 	public static final String CURRENT_DEPTH_PREFIX ="TreeGenerator.currentDepth.";
@@ -56,7 +56,7 @@ public @Getter @Setter class TreeGenerator implements DataGenerator {
 
 
 	@Override
-	public Object generate() {
+	public String generate() {
 		Object result =getgenerationBuffer().getData(CURRENT_DEPTH_PREFIX);
 
 

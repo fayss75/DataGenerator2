@@ -15,7 +15,7 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * @author fayss
  *
  */
-public @Getter @Setter class CSVGenerator implements DataGenerator {
+public @Getter @Setter class CSVGenerator implements DataGenerator <String>{
 	
 	public static final int DEFAULT_ROW_NUMBER = 10;
 	
@@ -30,7 +30,7 @@ public @Getter @Setter class CSVGenerator implements DataGenerator {
 	 * @see fr.fayss.datagenerator.DataGenerator#generate()
 	 */
 	@Override
-	public Object generate() {
+	public String generate() {
 		// TODO Auto-generated method stub
 		return null;
 	}

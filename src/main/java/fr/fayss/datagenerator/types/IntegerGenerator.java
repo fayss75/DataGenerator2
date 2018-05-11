@@ -15,7 +15,7 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * 
  * @author fayss
  */
-public @Getter @Setter class IntegerGenerator implements DataGenerator {
+public @Getter @Setter class IntegerGenerator implements DataGenerator <Integer>{
 
 	/**
 	 * Define the minimum value that can be generated
@@ -30,7 +30,7 @@ public @Getter @Setter class IntegerGenerator implements DataGenerator {
 	private Integer mEndInclusive = 9000;
 
 	@Override
-	public Object generate() {
+	public Integer generate() {
 			return RandomUtils.nextInt(getStartInclusive(), getEndInclusive());
 	}
 
@@ -49,6 +49,9 @@ public @Getter @Setter class IntegerGenerator implements DataGenerator {
 				getEndInclusive() != null &&  
 				getStartInclusive() < getEndInclusive();
 	}
+
+
+
 
 
 }

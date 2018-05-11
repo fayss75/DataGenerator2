@@ -18,12 +18,12 @@ import fr.fayss.datagenerator.ReferenceDataGenerator;
  * @author fayss
  *
  */
-public  class ReferencePropertyGenerator implements ReferenceDataGenerator {
+public  class ReferencePropertyGenerator implements ReferenceDataGenerator <String>{
 
 
 
 	private @Getter RepositoryItemGenerator mRepositoryItemGenerator ;
-	private @Getter @Setter DataGenerator  mReferenceIdGenerator;
+	private @Getter @Setter DataGenerator<String>  mReferenceIdGenerator;
 	private @Getter @Setter String mReferenceKey;
 	
 	public ReferencePropertyGenerator (){
@@ -45,9 +45,9 @@ public  class ReferencePropertyGenerator implements ReferenceDataGenerator {
 	 * @see fr.fayss.datagenerator.DataGenerator#generate()
 	 */
 	@Override
-	public Object generate() {
+	public String generate() {
 
-		Object repositoryId = getReferenceIdGenerator().generate();
+		String repositoryId = getReferenceIdGenerator().generate();
 		
 		GenerationBuffer genBuffer = GenerationBuffer.getInstance();
 		

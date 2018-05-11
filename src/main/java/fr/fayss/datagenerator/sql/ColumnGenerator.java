@@ -9,7 +9,7 @@ import fr.fayss.datagenerator.DataFormatter;
  * @author fayss
  *
  */
-public interface ColumnGenerator extends DataFormatter{
+public interface ColumnGenerator <T> extends DataFormatter <T>{
 	
 	
 	public static final String DEFAULT_COLUMN_NAME ="DFLT_COL_NAME";
