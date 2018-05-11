@@ -47,7 +47,7 @@ public class DataGeneratorBuilder {
 					throw new InternalException (pce);
 				}
 
-				bw.write(((DataGenerator)config.getPropertyConfiguration(DataConfigurationTools.DATA_GENERATOR_INSTANCE)).generate().toString());
+				bw.write((config.getDataGenerator()).generate().toString());
 			}
 		} catch (IOException ioe) {
 			throw new InternalException (ioe);

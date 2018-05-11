@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.fayss.datagenerator.atg;
 
 import fr.fayss.datagenerator.DataConfiguration;
@@ -9,7 +6,6 @@ import fr.fayss.datagenerator.DataGenerator;
 import fr.fayss.datagenerator.PropertyConfigurationException;
 import lombok.Getter;
 import lombok.Setter;
-import fr.fayss.datagenerator.types.IntegerGenerator;
 import org.apache.commons.lang3.RandomUtils;
 
 /**
@@ -40,7 +36,7 @@ public @Getter @Setter class ItemDescriptorIdGenerator implements DataGenerator<
 	private Integer mEndInclusive = 9000;
 
 
-	public Integer generateNum() {
+	private Integer generateNum() {
 		return RandomUtils.nextInt(getStartInclusive(), getEndInclusive());
 	}
 
@@ -63,10 +59,7 @@ public @Getter @Setter class ItemDescriptorIdGenerator implements DataGenerator<
 
 	@Override
 	public String generate() {
-		StringBuilder builder = new StringBuilder() ;
-
-
-		return builder.append(getPrefix())
+		return new StringBuilder().append(getPrefix())
 				.append(generateNum())
 				.append(getSuffix())
 				.toString();

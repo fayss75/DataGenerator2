@@ -1,5 +1,6 @@
-package fr.fayss.datagenerator.sql;
+package fr.fayss.datagenerator.sql.string;
 
+import fr.fayss.datagenerator.sql.ColumnGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import fr.fayss.datagenerator.types.StringGenerator;
@@ -9,7 +10,7 @@ import fr.fayss.datagenerator.types.StringGenerator;
  *
  */
 public  @Getter @Setter class VarcharGenerator extends StringGenerator implements
-		ColumnGenerator <String>{
+        ColumnGenerator<String> {
 	
 	private String mValue;
 	

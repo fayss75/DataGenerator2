@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dataConfig name="Config1">
+
+	<mainGenerators name="category" />
+
+	<dataGenerator id="sku" class="fr.fayss.datagenerator.atg.RepositoryItemGenerator">
+		<propertyValue name="itemName">sku</propertyValue>
+		<propertyConfig name="idGenerator">
+			<propertyValue name="prefix">sku</propertyValue>
+		</propertyConfig>
+		<propertyConfig name="propertyList" type="list">
+			<dataGeneratorRef>skuString1</dataGeneratorRef>
+			<dataGeneratorRef>skuString2</dataGeneratorRef>
+			<dataGeneratorRef>skudefault</dataGeneratorRef>
+			<dataGeneratorRef>skudoubleProperty</dataGeneratorRef>
+			<dataGeneratorRef>skuintProperty</dataGeneratorRef>
+		</propertyConfig>
+	</dataGenerator>
+
+	<dataGenerator id="skuString1" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>stringGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">skuString1</propertyValue>
+	</dataGenerator>
+	
+		<dataGenerator id="skuString2" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>stringGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">skuString2</propertyValue>
+	</dataGenerator>
+	
+		<dataGenerator id="skudefault" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyValue name="propertyName">skudefault</propertyValue>
+	</dataGenerator>
+	
+		<dataGenerator id="skudoubleProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>doubleGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">skudoubleProperty</propertyValue>
+	</dataGenerator>
+	
+		<dataGenerator id="skuintProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>integerGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">skuintProperty</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="stringProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>stringGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">stringProperty</propertyValue>
+	</dataGenerator>
+
+
+	<dataGenerator id="product" class="fr.fayss.datagenerator.atg.RepositoryItemGenerator">
+		<propertyValue name="itemName">product</propertyValue>
+		<propertyConfig name="idGenerator">
+			<propertyValue name="prefix">prd</propertyValue>
+		</propertyConfig>
+		<propertyConfig name="propertyList" type="list">
+			<dataGeneratorRef>prdString1</dataGeneratorRef>
+			<dataGeneratorRef>prdString2</dataGeneratorRef>
+			<dataGeneratorRef>prddefault</dataGeneratorRef>
+			<dataGeneratorRef>prddoubleProperty</dataGeneratorRef>
+			<dataGeneratorRef>prdintProperty</dataGeneratorRef>
+			<dataGeneratorRef>childSkus</dataGeneratorRef>
+		</propertyConfig>
+	</dataGenerator>
+
+
+	<dataGenerator id="prdString1" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>stringGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">prdString1</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="prdString2" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>stringGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">prdString2</propertyValue>
+	</dataGenerator>
+
+
+	<dataGenerator id="prddefault" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyValue name="propertyName">prddefault</propertyValue>
+	</dataGenerator>
+
+
+	<dataGenerator id="prddoubleProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>doubleGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">prddoubleProperty</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="prdintProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>integerGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">prdintProperty</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="childSkus" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>prdSimpleCollectionGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">childSkus</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="prdrefDataGenerator" class="fr.fayss.datagenerator.atg.ReferencePropertyGenerator">
+		<propertyConfig name="repositoryItemGenerator">
+			<dataGeneratorRef>sku</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="referenceKey">childSkus</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="prdSimpleCollectionGenerator" class="fr.fayss.datagenerator.structure.SimpleCollectionGenerator">
+		<propertyConfig name="dataGenerator">
+			<dataGeneratorRef>prdrefDataGenerator</dataGeneratorRef>
+		</propertyConfig>
+	</dataGenerator>
+	
+	
+	<dataGenerator id="skuCollection" class="fr.fayss.datagenerator.structure.SimpleCollectionGenerator">
+		<propertyConfig name="dataGenerator">
+			<dataGeneratorRef>doubleGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="separator">//</propertyValue>
+	</dataGenerator>
+	
+	
+	<dataGenerator id="category" class="fr.fayss.datagenerator.atg.RepositoryItemGenerator">
+		<propertyValue name="itemName">category</propertyValue>
+		<propertyConfig name="idGenerator">
+			<propertyValue name="prefix">cat</propertyValue>
+		</propertyConfig>
+		<propertyConfig name="propertyList" type="list">
+			<dataGeneratorRef>catString1</dataGeneratorRef>
+			<dataGeneratorRef>catString2</dataGeneratorRef>
+			<dataGeneratorRef>catdefault</dataGeneratorRef>
+			<dataGeneratorRef>catdoubleProperty</dataGeneratorRef>
+			<dataGeneratorRef>catintProperty</dataGeneratorRef>
+			<dataGeneratorRef>childCategories</dataGeneratorRef>
+			<dataGeneratorRef>childProducts</dataGeneratorRef>				
+		</propertyConfig>
+	</dataGenerator>
+	
+	<dataGenerator id="catString1" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>loremIpsumGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">catString1</propertyValue>
+	</dataGenerator>
+	
+		<dataGenerator id="catString2" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>loremIpsumGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">catString2</propertyValue>
+	</dataGenerator>
+	
+		<dataGenerator id="catdefault" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyValue name="propertyName">catdefault</propertyValue>
+	</dataGenerator>
+
+			<dataGenerator id="catdoubleProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>doubleGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">catdoubleProperty</propertyValue>
+	</dataGenerator>
+	
+	
+	<dataGenerator id="catintProperty" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>integerGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">catintProperty</propertyValue>
+	</dataGenerator>
+	
+	
+		<dataGenerator id="childCategories" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>catTreeGenerator</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">childCategories</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="catRefDataGenerator" class="fr.fayss.datagenerator.atg.ReferencePropertyGenerator">
+		<propertyConfig name="repositoryItemGenerator">
+			<dataGeneratorRef>category</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="referenceKey">childCategories</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="catTreeGenerator" class="fr.fayss.datagenerator.structure.TreeGenerator">
+		<propertyConfig name="dataGenerator">
+			<dataGeneratorRef>catRefDataGenerator</dataGeneratorRef>
+		</propertyConfig>
+	</dataGenerator>
+	
+	
+	
+	<dataGenerator id="childProducts" class="fr.fayss.datagenerator.atg.PropertyGenerator">
+		<propertyConfig name="dataTypeGenerator">
+			<dataGeneratorRef>treePrdGen</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="propertyName">childProducts</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="refPrdDataGenerator" class="fr.fayss.datagenerator.atg.ReferencePropertyGenerator">
+		<propertyConfig name="repositoryItemGenerator">
+			<dataGeneratorRef>product</dataGeneratorRef>
+		</propertyConfig>
+		<propertyValue name="referenceKey">childProducts</propertyValue>
+	</dataGenerator>
+
+	<dataGenerator id="treePrdGen" class="fr.fayss.datagenerator.structure.SimpleCollectionGenerator">
+		<propertyConfig name="dataGenerator">
+			<dataGeneratorRef>refPrdDataGenerator</dataGeneratorRef>
+		</propertyConfig>
+	</dataGenerator>
+		
+	<dataGenerator id="loremIpsumGenerator" class="fr.fayss.datagenerator.types.LoremIpsumGenerator"/>
+	<dataGenerator id="stringGenerator" class="fr.fayss.datagenerator.types.StringGenerator"/>
+	<dataGenerator id="doubleGenerator" class="fr.fayss.datagenerator.types.DoubleGenerator"/>
+	<dataGenerator id="integerGenerator" class="fr.fayss.datagenerator.types.IntegerGenerator"/>
+
+</dataConfig>

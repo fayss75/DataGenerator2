@@ -21,7 +21,7 @@ public @Getter @Setter class LoremIpsumGenerator implements DataGenerator <Strin
 	/**
 	 * Define the LoremIpsum api
 	 */
-	private LoremIpsum mLoremIpsum;
+	private static LoremIpsum LOREMIPSUM = new LoremIpsum();
 
 	/**
 	 * Define the quantity of words or paragraphs to generate
@@ -41,7 +41,7 @@ public @Getter @Setter class LoremIpsumGenerator implements DataGenerator <Strin
 	 *
 	 */
 	public LoremIpsumGenerator() {
-		mLoremIpsum = new LoremIpsum();
+
 	}
 
 
@@ -51,10 +51,10 @@ public @Getter @Setter class LoremIpsumGenerator implements DataGenerator <Strin
 
 		if (getUseParagraph()){
 
-			return getLoremIpsum().getParagraphs(getQuantity());
+			return LOREMIPSUM.getParagraphs(getQuantity());
 		} else {
 
-			return getLoremIpsum().getWords(getQuantity());
+			return LOREMIPSUM.getWords(getQuantity());
 		}
 	}
 

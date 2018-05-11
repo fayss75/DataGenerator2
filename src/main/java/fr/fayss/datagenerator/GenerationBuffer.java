@@ -38,7 +38,7 @@ public class GenerationBuffer {
 
 	public void pushItem (DataConfiguration item) throws PropertyConfigurationException{
 
-		if (item.getPropertyConfiguration(DataConfigurationTools.DATA_GENERATOR_INSTANCE) == null) {
+		if (item.getDataGenerator() == null) {
 			throw new PropertyConfigurationException ("data generator not found in the dataConfig. use the value "
 					+ "of the static property DataConfigurationTools.DATA_GENERATOR_INSTANCE") ;
 		} else {

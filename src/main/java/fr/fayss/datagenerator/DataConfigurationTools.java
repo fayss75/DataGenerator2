@@ -43,15 +43,12 @@ public class DataConfigurationTools {
 	 */
 	public static void configure (DataConfiguration pDataConfig)
 			throws PropertyConfigurationException {
-		DataGenerator dataGenerator = (DataGenerator) pDataConfig.getPropertyConfiguration(DATA_GENERATOR_INSTANCE);
+		DataGenerator<?> dataGenerator =  pDataConfig.getDataGenerator();
 		
 		if (dataGenerator != null){
 			
 			
 			for (String property : pDataConfig.getAllConfiguredPropertyName()) {
-				if (DATA_GENERATOR_INSTANCE.equals(property)){
-					continue ;
-				}
 				Object propertyConfig = pDataConfig.getPropertyConfiguration(property);
 				configure( dataGenerator,  property,  propertyConfig ,false) ;
 			}

@@ -5,6 +5,8 @@ package fr.fayss.datagenerator.types;
 
 import java.util.List;
 
+import fr.fayss.datagenerator.structure.CollectionGenerator;
+import fr.fayss.datagenerator.structure.ComplexCollectionGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import fr.fayss.datagenerator.DataConfiguration;
@@ -15,24 +17,27 @@ import fr.fayss.datagenerator.PropertyConfigurationException;
  * @author fayss
  *
  */
-public @Getter @Setter class CSVGenerator implements DataGenerator <String>{
+public @Getter @Setter class CSVGenerator extends ComplexCollectionGenerator {
 	
-	public static final int DEFAULT_ROW_NUMBER = 10;
-	
-	private int mNbRow = DEFAULT_ROW_NUMBER ;
-	private List <DataGenerator> mColumnGenerators;
+	private static final int DEFAULT_ROW_NUMBER = 10;
+	private static final String QUOTE = "\"";
 
-	/**
-	 * 
-	 */
+
+	private int mNbRow = DEFAULT_ROW_NUMBER ;
+	private boolean mUseQuote = true;
+	private String mQuoteValue = QUOTE;
 
 	/* (non-Javadoc)
 	 * @see fr.fayss.datagenerator.DataGenerator#generate()
 	 */
 	@Override
 	public String generate() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0 ; i < mNbRow ;i++) {
+			sb.append(super.generate());
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +55,16 @@ public @Getter @Setter class CSVGenerator implements DataGenerator <String>{
 	 */
 	@Override
 	public boolean isConfigured() {
-		return getNbRow() > 0 && getColumnGenerators() != null;
+		return super.isConfigured() &&  getNbRow() > 0 ;
 	}
 
+	@Override
+	protected StringBuilder beforeElementGen(StringBuilder stringBuilder) {
+		return 	isUseQuote()?stringBuilder.append(mQuoteValue) : super.beforeElementGen(stringBuilder);
+	}
+
+	@Override
+	protected StringBuilder afterElementGen(StringBuilder stringBuilder) {
+		return 	isUseQuote()?stringBuilder.append(mQuoteValue) : super.afterElementGen(stringBuilder);
+	}
 }

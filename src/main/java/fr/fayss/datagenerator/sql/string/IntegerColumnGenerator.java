@@ -1,5 +1,6 @@
-package fr.fayss.datagenerator.sql;
+package fr.fayss.datagenerator.sql.string;
 
+import fr.fayss.datagenerator.sql.ColumnGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import fr.fayss.datagenerator.types.IntegerGenerator;
  * @author fayss
  *
  */
-public @Getter @Setter class IntegerColumnGenerator extends IntegerGenerator implements ColumnGenerator <Integer>{
+public @Getter @Setter class IntegerColumnGenerator extends IntegerGenerator implements ColumnGenerator<Integer> {
 	
 	private Integer mValue;
 	private String mColumnName  ;

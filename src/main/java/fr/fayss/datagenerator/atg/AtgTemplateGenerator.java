@@ -1,12 +1,17 @@
 package fr.fayss.datagenerator.atg;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.esotericsoftware.yamlbeans.YamlWriter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 
 import fr.fayss.datagenerator.DataGenerator;
@@ -27,21 +32,15 @@ public class AtgTemplateGenerator {
 	private String mainGeneratorId ;
 
 
-	public static final String File_Path ="C:\\Users\\Picsou\\IdeaProjects\\DataGenerator\\datagenerator\\configurationsV2\\Config.xml" ;
+	private static final String File_Path ="C:\\Users\\FAYCAL\\Documents\\project\\DataGenerator2\\src\\main\\resources\\configurationTest\\Config.xml" ;
 
 	
 	
-	public static final String PROPERTY_CONFIG_TYPE_LIST = "list";
-	public static final String PROPERTY_CONFIG_TYPE_DEFAULT = "default";
+	private static final String PROPERTY_CONFIG_TYPE_LIST = "list";
+	private static final String PROPERTY_CONFIG_TYPE_DEFAULT = "default";
 	
 	
-	private AtgTemplateGenerator () {
-		
-	}
-	
-	
-	
-	public static AtgTemplateGenerator getInstance () {
+	private static AtgTemplateGenerator getInstance () {
 		return new AtgTemplateGenerator ();
 	}
 	
@@ -57,6 +56,19 @@ public class AtgTemplateGenerator {
 
 			System.out.println(dataconfig.getName());
 
+			YamlWriter writer = new YamlWriter(new FileWriter("C:\\Users\\FAYCAL\\Documents\\project\\output.yml"));
+			writer.write(dataconfig);
+			writer.close();
+
+
+			ObjectMapper mapper = new ObjectMapper();
+
+
+//Object to JSON in file
+			mapper.writeValue(new File("C:\\Users\\FAYCAL\\Documents\\project\\file.json"), dataconfig);
+
+
+
 			AtgTemplateGenerator templateGen = AtgTemplateGenerator.getInstance();
 
 			templateGen.generateTemplatefromXml (new File (File_Path));
@@ -67,12 +79,12 @@ public class AtgTemplateGenerator {
 			DataGenerator maindataGen = dataGenMap.get(templateGen.getMainGeneratorId());
 			
 			
-			File file = new File("C:\\Users\\Picsou\\Documents\\Projects\\AtgTemplateGenerator.txt");
+			File file = new File("C:\\Users\\FAYCAL\\Documents\\project\\AtgTemplateGenerator.txt");
 			
 			DataGeneratorBuilder.build(maindataGen, file);
 			
 
-		} catch (DataConfigException e) {
+		} catch (DataConfigException | IOException e) {
 			e.printStackTrace();
 		}
 	}

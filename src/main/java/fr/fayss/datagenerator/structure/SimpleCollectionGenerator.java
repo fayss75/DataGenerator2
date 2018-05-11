@@ -1,6 +1,7 @@
 package fr.fayss.datagenerator.structure;
 
 
+import fr.fayss.datagenerator.structure.CollectionGenerator;
 import org.apache.commons.lang3.StringUtils;
 
 import lombok.Getter;

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.fayss.datagenerator.sql;
 
 import fr.fayss.datagenerator.DataFormatter;
@@ -12,9 +9,9 @@ import fr.fayss.datagenerator.DataFormatter;
 public interface ColumnGenerator <T> extends DataFormatter <T>{
 	
 	
-	public static final String DEFAULT_COLUMN_NAME ="DFLT_COL_NAME";
+	String DEFAULT_COLUMN_NAME ="DFLT_COL_NAME";
 	
-	public String getColumnName();
-	public void setColumnName(String pColumnName);
+	String getColumnName();
+	void setColumnName(String pColumnName);
 
 }

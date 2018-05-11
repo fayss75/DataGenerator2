@@ -1,5 +1,9 @@
 package fr.fayss.datagenerator;
 
+import fr.fayss.datagenerator.atg.xml.DataConfig;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -20,6 +24,8 @@ public  class DataConfiguration {
 	 * value is the value to set
 	 */
 	private Map<String, Object> mPropertyConfigMap;
+
+	private @Getter @Setter DataGenerator <?> mDataGenerator;
 
 	/** Constructor */
 	public DataConfiguration () {
@@ -48,6 +54,5 @@ public  class DataConfiguration {
 	public Set <String> getAllConfiguredPropertyName (){
 		return mPropertyConfigMap.keySet();
 	}
-
 
 }

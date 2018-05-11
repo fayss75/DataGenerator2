@@ -3,6 +3,7 @@ package fr.fayss.datagenerator.structure;
 import java.util.Collection;
 import java.util.Iterator;
 
+import fr.fayss.datagenerator.structure.CollectionGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import fr.fayss.datagenerator.DataConfiguration;
@@ -19,7 +20,7 @@ import fr.fayss.datagenerator.PropertyValueException;
  * @author fayss
  *
  */
-public class ComplexCollectionGenerator implements CollectionGenerator <String>{
+public class ComplexCollectionGenerator implements CollectionGenerator<String> {
 
 	/**  Define the collection of data generator */
 	private @Getter @Setter Collection<DataGenerator> mDataList ;
@@ -55,14 +56,35 @@ public class ComplexCollectionGenerator implements CollectionGenerator <String>{
 		
 		
 		while (dataIter.hasNext()){
-			sb.append(dataIter.next().generate());
+
+			beforeElementGen(sb)
+					.append(dataIter.next().generate());
 			
 			if (dataIter.hasNext()){
-				sb.append(getSeparator());
+				afterElementGen(sb)
+						.append(getSeparator());
 			}
 		}
 
 		return sb.toString();
+	}
+
+	/**
+	 * Hook ton insert any data before an element of the collection is generated
+	 * @param stringBuilder
+	 * @return
+	 */
+	protected StringBuilder beforeElementGen (StringBuilder stringBuilder) {
+		return stringBuilder;
+	}
+
+	/**
+	 * Hook ton insert any data after an element of the collection is generated
+	 * @param stringBuilder
+	 * @return
+	 */
+	protected StringBuilder afterElementGen (StringBuilder stringBuilder) {
+		return stringBuilder;
 	}
 
 	@Override

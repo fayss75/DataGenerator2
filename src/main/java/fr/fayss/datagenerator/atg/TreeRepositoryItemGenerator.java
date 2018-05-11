@@ -98,7 +98,7 @@ public @Getter @Setter class TreeRepositoryItemGenerator extends RepositoryItemG
 	 */
 	private String formatIds (List <String> ids) {
 		StringBuilder sb = new StringBuilder();
-		if (ids.size() > 0) ;
+
 		sb.append(ids.get(0));
 
 		for (int i = 1; i < ids.size(); i++) {
@@ -167,10 +167,10 @@ public @Getter @Setter class TreeRepositoryItemGenerator extends RepositoryItemG
 			throw new PropertyValueException("Quantity must be a positive value, actual value:" + pQuantity);
 		}
 
-		List <String> ids = new ArrayList <String>(pQuantity);
+		List <String> ids = new ArrayList <String> (pQuantity);
 
 		for (int i = 0 ; i < pQuantity ; i++ ){
-			ids.add((String)getIdGenerator().generate());
+			ids.add(getIdGenerator().generate());
 		}
 
 		return ids;

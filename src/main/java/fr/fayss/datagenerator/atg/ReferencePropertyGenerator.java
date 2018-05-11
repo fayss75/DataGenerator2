@@ -51,11 +51,11 @@ public  class ReferencePropertyGenerator implements ReferenceDataGenerator <Stri
 		
 		GenerationBuffer genBuffer = GenerationBuffer.getInstance();
 		
-		DataConfiguration dataconfigutation = new DataConfiguration() ;
-		dataconfigutation.setPropertyConfiguration(DataConfigurationTools.DATA_GENERATOR_INSTANCE,getRepositoryItemGenerator());
-		dataconfigutation.setPropertyConfiguration(DataFormatter.VALUE_PROP,repositoryId);
+		DataConfiguration dataConfigutation = new DataConfiguration() ;
+		dataConfigutation.setDataGenerator(getRepositoryItemGenerator());
+		dataConfigutation.setPropertyConfiguration(DataFormatter.VALUE_PROP,repositoryId);
 		try {
-			genBuffer.pushItem(dataconfigutation);
+			genBuffer.pushItem(dataConfigutation);
 		} catch (PropertyConfigurationException e) {
 			throw new GenerationException(e) ;
 		}

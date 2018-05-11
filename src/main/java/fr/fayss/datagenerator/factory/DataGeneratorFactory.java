@@ -19,11 +19,8 @@ import fr.fayss.datagenerator.atg.xml.DataConfig;
  */
 public class DataGeneratorFactory {
 
-	public static final String XML_BINDING_PACKAGE = "fr.fayss.datagenerator.atg.xml" ;
+	private static final String XML_BINDING_PACKAGE = "fr.fayss.datagenerator.atg.xml" ;
 
-
-
-	public static final String FILE_PATH ="F:/AtgTemplate.txt" ;  
 
 
 	public static DataConfig  parseXmlFile (File pXmlFile) throws DataConfigException{

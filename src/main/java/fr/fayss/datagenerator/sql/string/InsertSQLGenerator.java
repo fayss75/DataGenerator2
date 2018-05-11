@@ -1,10 +1,11 @@
 /**
  * 
  */
-package fr.fayss.datagenerator.sql;
+package fr.fayss.datagenerator.sql.string;
 
 import java.util.List;
 
+import fr.fayss.datagenerator.sql.ColumnGenerator;
 import org.apache.commons.lang3.StringUtils;
 
 import lombok.Getter;
