@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="dataConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="mainGenerators">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="name"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        
+        <xs:element name="dataGenerator" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType >
+            <xs:sequence>
+			  <xs:element name="propertyValue" type="propertyValue" maxOccurs="unbounded" minOccurs="0" />
+              <xs:element name="propertyConfig" maxOccurs="unbounded" minOccurs="0" type="propertyConfig" />
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="id" use="optional"/>
+            <xs:attribute type="xs:string" name="class" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="name"/>
+    </xs:complexType>
+  </xs:element>
+
+
+
+	<xs:complexType name="propertyValue">
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="name" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+
+
+	<xs:complexType name="propertyConfig" >
+		<xs:sequence>
+			<xs:element name="propertyConfig" type="propertyConfig" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="propertyValue" type="propertyValue" maxOccurs="unbounded" minOccurs="0" />
+			<xs:element name="dataGeneratorRef"  type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="optional"/>
+		<xs:attribute name="type" type="xs:string" use="optional"/>
+	</xs:complexType>
+</xs:schema>
+
