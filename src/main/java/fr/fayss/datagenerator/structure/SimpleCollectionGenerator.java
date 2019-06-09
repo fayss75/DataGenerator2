@@ -1,16 +1,10 @@
 package fr.fayss.datagenerator.structure;
 
 
-import fr.fayss.datagenerator.structure.CollectionGenerator;
-import org.apache.commons.lang3.StringUtils;
-
+import fr.fayss.datagenerator.*;
 import lombok.Getter;
 import lombok.Setter;
-import fr.fayss.datagenerator.DataConfiguration;
-import fr.fayss.datagenerator.DataConfigurationTools;
-import fr.fayss.datagenerator.DataGenerator;
-import fr.fayss.datagenerator.PropertyConfigurationException;
-import fr.fayss.datagenerator.PropertyValueException;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Generate a list of generated data. All data use the same DataGenerator class

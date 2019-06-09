@@ -1,6 +1,5 @@
 package fr.fayss.datagenerator;
 
-import fr.fayss.datagenerator.atg.xml.DataConfig;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -12,13 +12,14 @@
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <jaxb.api.version>LATEST</jaxb.api.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.20</version>
+            <version>LATEST</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -55,7 +56,46 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.0.2</version>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+        <dependency>
+
+            <groupId>javax.xml.bind</groupId>
+
+            <artifactId>jaxb-api</artifactId>
+
+            <version>${jaxb.api.version}</version>
+
+        </dependency>
+
+
+
+        <dependency>
+
+            <groupId>com.sun.xml.bind</groupId>
+
+            <artifactId>jaxb-core</artifactId>
+
+            <version>${jaxb.api.version}</version>
+
+        </dependency>
+
+
+
+        <dependency>
+
+            <groupId>com.sun.xml.bind</groupId>
+
+            <artifactId>jaxb-impl</artifactId>
+
+            <version>${jaxb.api.version}</version>
+
         </dependency>
     </dependencies>
 

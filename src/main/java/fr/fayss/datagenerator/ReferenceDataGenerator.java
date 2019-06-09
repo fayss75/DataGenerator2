@@ -10,8 +10,8 @@ package fr.fayss.datagenerator;
 public interface ReferenceDataGenerator <T> extends DataGenerator <T>{
 	
 	
-	public DataGenerator getReferenceIdGenerator();
+	DataGenerator getReferenceIdGenerator();
 	
-	public String getReferenceKey();
+	String getReferenceKey();
 
 }

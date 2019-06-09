@@ -21,8 +21,10 @@ public class DataGeneratorBuilder {
 	 * @param pDataGenerator the generator to execute
 	 * @param pOutputFile the output file 
 	 */
-	public static void build (DataGenerator pDataGenerator, File pOutputFile) {
+	public static void generateAll(DataGenerator pDataGenerator, File pOutputFile) {
 
+		GenerationBuffer generationBuffer =
+				GenerationBuffer.getInstance();
 		BufferedWriter bw = null;
 		try {
 			if (!pOutputFile.exists()) {
@@ -33,8 +35,7 @@ public class DataGeneratorBuilder {
 			bw = new BufferedWriter(fw);
 			bw.write(pDataGenerator.generate().toString());
 
-			GenerationBuffer generationBuffer = 
-					GenerationBuffer.getInstance();
+
 			// check if any dataconfiguratione exist in the buffer,
 			// if any, call the configure and then the generate method
 			while (generationBuffer.hasNext()){
@@ -52,6 +53,7 @@ public class DataGeneratorBuilder {
 		} catch (IOException ioe) {
 			throw new InternalException (ioe);
 		} finally {
+			generationBuffer.clear();
 			try {
 				if (bw != null)
 					bw.close();

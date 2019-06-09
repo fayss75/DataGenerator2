@@ -9,17 +9,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.fayss.datagenerator.DataGeneratorBuilder;
+import fr.fayss.datagenerator.factory.xml.DataConfig;
+import fr.fayss.datagenerator.factory.xml.PropertyConfig;
+import fr.fayss.datagenerator.factory.xml.PropertyValue;
 import org.apache.commons.lang3.StringUtils;
 
 import fr.fayss.datagenerator.DataGenerator;
-import fr.fayss.datagenerator.DataGeneratorBuilder;
 import fr.fayss.datagenerator.PropertyConfigurationException;
-import fr.fayss.datagenerator.atg.xml.DataConfig;
-import fr.fayss.datagenerator.atg.xml.PropertyConfig;
-import fr.fayss.datagenerator.atg.xml.PropertyValue;
 import fr.fayss.datagenerator.factory.DataConfigException;
 import fr.fayss.datagenerator.factory.DataGeneratorFactory;
 
@@ -28,11 +27,12 @@ import static fr.fayss.datagenerator.DataConfigurationTools.*;
 public class AtgTemplateGenerator {
 
 
-	private  Map<String, DataGenerator> dataGenMap  = new HashMap<String, DataGenerator> ();
+	private  Map<String, DataGenerator> dataGenMap  = new HashMap ();
 	private String mainGeneratorId ;
 
 
-	private static final String File_Path ="C:\\Users\\FAYCAL\\Documents\\project\\DataGenerator2\\src\\main\\resources\\configurationTest\\Config.xml" ;
+	private static final String folder_Path = "C:\\Users\\Picsou\\Documents\\Projects\\";
+	private static final String File_Path =folder_Path+"DataGenerator2\\src\\main\\resources\\configurationTest\\Config.xml" ;
 
 	
 	
@@ -52,11 +52,11 @@ public class AtgTemplateGenerator {
 
 		try {
 
-			DataConfig dataconfig = DataGeneratorFactory.parseXmlFile(File_Path) ;
+			DataConfig dataconfig = DataGeneratorFactory.parseFile(File_Path, DataGeneratorFactory.SourceType.XML) ;
 
 			System.out.println(dataconfig.getName());
 
-			YamlWriter writer = new YamlWriter(new FileWriter("C:\\Users\\FAYCAL\\Documents\\project\\output.yml"));
+			YamlWriter writer = new YamlWriter(new FileWriter(folder_Path+"output.yml"));
 			writer.write(dataconfig);
 			writer.close();
 
@@ -65,7 +65,7 @@ public class AtgTemplateGenerator {
 
 
 //Object to JSON in file
-			mapper.writeValue(new File("C:\\Users\\FAYCAL\\Documents\\project\\file.json"), dataconfig);
+			mapper.writeValue(new File(folder_Path+"file.json"), dataconfig);
 
 
 
@@ -79,9 +79,9 @@ public class AtgTemplateGenerator {
 			DataGenerator maindataGen = dataGenMap.get(templateGen.getMainGeneratorId());
 			
 			
-			File file = new File("C:\\Users\\FAYCAL\\Documents\\project\\AtgTemplateGenerator.txt");
+			File file = new File(folder_Path+"AtgTemplateGenerator.txt");
 			
-			DataGeneratorBuilder.build(maindataGen, file);
+			DataGeneratorBuilder.generateAll(maindataGen, file);
 			
 
 		} catch (DataConfigException | IOException e) {
@@ -108,10 +108,9 @@ public class AtgTemplateGenerator {
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 */
-	@SuppressWarnings("unchecked")
 	public  void registerDataGenerator (DataConfig dataConfig) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		
-		for (fr.fayss.datagenerator.atg.xml.DataConfig.DataGenerator dagaGenConfig : dataConfig.getDataGenerator()){
+		for (DataConfig.DataGenerator dagaGenConfig : dataConfig.getDataGenerator()){
 			String dataGenClassName = dagaGenConfig.getClazz() ;
 
 			Class  <DataGenerator> dataGenClass =  (Class  <DataGenerator>) Class.forName(dataGenClassName);
@@ -123,15 +122,8 @@ public class AtgTemplateGenerator {
 			}
 		}
 	}
-	
-	
-	/**
-	 * Configure property config
-	 * @param pPropertyConfig
-	 * @throws PropertyConfigurationException 
-	 * @throws InvocationTargetException 
-	 * @throws IllegalAccessException 
-	 */
+
+
 	public void configurePropertyconfig (DataGenerator pDataGenerator , PropertyConfig pPropertyConfig) throws PropertyConfigurationException {
 		
 		
@@ -181,19 +173,21 @@ public class AtgTemplateGenerator {
 	public  void generateTemplatefromXml (File pXmlFile) {
 
 
+			// parse xml file
+		DataConfig dataConfig = null;
 		try {
-			// parse xml file 
-			DataConfig dataConfig = DataGeneratorFactory.parseXmlFile(pXmlFile);
-			
-			
-			setMainGeneratorId(dataConfig.getMainGenerators().getName());
+			dataConfig = DataGeneratorFactory.parseFile(pXmlFile, DataGeneratorFactory.SourceType.XML);
+
+
+
+		setMainGeneratorId(dataConfig.getMainGenerators().getName());
 			
 
 			//1 iterate threw data generators and add them to dataGenMap
 			registerDataGenerator (dataConfig);
 
 			//2 iterate threw data generators to configure them
-			for (fr.fayss.datagenerator.atg.xml.DataConfig.DataGenerator dagaGenConfig : dataConfig.getDataGenerator()){
+			for (DataConfig.DataGenerator dagaGenConfig : dataConfig.getDataGenerator()){
 
 				DataGenerator DataGenIns = 	getDataGeneratorById(dagaGenConfig.getId());
 
@@ -208,22 +202,11 @@ public class AtgTemplateGenerator {
 				}
 
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PropertyConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (DataConfigException e) {
-			// TODO Auto-generated catch block
+
+		} catch (DataConfigException | ClassNotFoundException | InstantiationException | IllegalAccessException | PropertyConfigurationException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 

@@ -1,7 +1,6 @@
 package fr.fayss.datagenerator;
 
 
-
 /**
  * Interface of all data generators
  * 
@@ -10,12 +9,15 @@ package fr.fayss.datagenerator;
  */
 public interface DataGenerator <T>{
 
-	/** Returns the generated data 
+	/**
+	 * Returns the generated data
 	 * this method should call the method isGeneratorConfigured () before 
 	 * generating any data.
 	 * @throws GenerationException  if there is any error during the generation
 	 * */
-	public T generate() throws GenerationException;
+	T generate() throws GenerationException ;
+
+
 	
 	/**
 	 * Configure properties of the data generator
@@ -23,7 +25,7 @@ public interface DataGenerator <T>{
 	 * @param pDataconfig
 	 * @throws PropertyConfigurationException
 	 */
-	public void configure(DataConfiguration pDataconfig) throws PropertyConfigurationException ;
+	void configure(DataConfiguration pDataconfig) throws PropertyConfigurationException ;
 	
 	/**
 	 * Verify if the dataGenerator has the minimum configuration to work.
@@ -36,5 +38,5 @@ public interface DataGenerator <T>{
 	 * Exception throw at its level
 	 * @return true if its well configured, false otherwise
 	 */
-	public boolean isConfigured();
+	boolean isConfigured();
 }

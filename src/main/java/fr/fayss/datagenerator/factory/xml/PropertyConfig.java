@@ -1,25 +1,18 @@
-//
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.09.03 à 11:22:41 PM CEST 
-//
 
+package fr.fayss.datagenerator.factory.xml;
 
-package fr.fayss.datagenerator.atg.xml;
-
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * <p>Classe Java pour propertyConfig complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schï¿½ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="propertyConfig"&gt;
@@ -143,7 +136,7 @@ public class PropertyConfig {
     }
 
     /**
-     * Obtient la valeur de la propriété name.
+     * Obtient la valeur de la propriï¿½tï¿½ name.
      * 
      * @return
      *     possible object is
@@ -155,7 +148,7 @@ public class PropertyConfig {
     }
 
     /**
-     * Définit la valeur de la propriété name.
+     * Dï¿½finit la valeur de la propriï¿½tï¿½ name.
      * 
      * @param value
      *     allowed object is
@@ -167,7 +160,7 @@ public class PropertyConfig {
     }
 
     /**
-     * Obtient la valeur de la propriété type.
+     * Obtient la valeur de la propriï¿½tï¿½ type.
      * 
      * @return
      *     possible object is
@@ -179,7 +172,7 @@ public class PropertyConfig {
     }
 
     /**
-     * Définit la valeur de la propriété type.
+     * Dï¿½finit la valeur de la propriï¿½tï¿½ type.
      * 
      * @param value
      *     allowed object is

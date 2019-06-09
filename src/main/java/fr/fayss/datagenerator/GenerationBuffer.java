@@ -62,4 +62,9 @@ public class GenerationBuffer {
 	public boolean hasNext () {
 		return ! mDataConfiguration.isEmpty();
 	}
+
+	public void clear () {
+		mDatas.clear();
+		mDataConfiguration.clear();
+	}
 }

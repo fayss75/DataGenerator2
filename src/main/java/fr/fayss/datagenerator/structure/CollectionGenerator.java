@@ -15,13 +15,13 @@ public interface CollectionGenerator <T> extends DataGenerator<T> {
 	/**
 	 * @return the separator value
 	 */
-	public String getSeparator();
+	String getSeparator();
 	
 	
 	/**
 	 * Set the separator value
 	 * @param pSeparator the value of the separator
 	 */
-	public void setSeparator(String pSeparator) ;
+	void setSeparator(String pSeparator) ;
 
 }

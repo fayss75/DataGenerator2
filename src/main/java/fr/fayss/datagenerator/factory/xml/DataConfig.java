@@ -1,22 +1,9 @@
-//
-// Ce fichier a �t� g�n�r� par l'impl�mentation de r�f�rence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apport�e � ce fichier sera perdue lors de la recompilation du sch�ma source. 
-// G�n�r� le : 2015.09.03 � 11:22:41 PM CEST 
-//
 
+package fr.fayss.datagenerator.factory.xml;
 
-package fr.fayss.datagenerator.atg.xml;
-
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -191,25 +178,25 @@ public class DataConfig {
 
         /**
          * Gets the value of the propertyValue property.
-         * 
+         *
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the propertyValue property.
-         * 
+         *
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getPropertyValue().add(newItem);
          * </pre>
-         * 
-         * 
+         *
+         *
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link PropertyValue }
-         * 
-         * 
+         *
+         *
          */
         public List<PropertyValue> getPropertyValue() {
             if (propertyValue == null) {
@@ -220,25 +207,25 @@ public class DataConfig {
 
         /**
          * Gets the value of the propertyConfig property.
-         * 
+         *
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the propertyConfig property.
-         * 
+         *
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getPropertyConfig().add(newItem);
          * </pre>
-         * 
-         * 
+         *
+         *
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link PropertyConfig }
-         * 
-         * 
+         *
+         *
          */
         public List<PropertyConfig> getPropertyConfig() {
             if (propertyConfig == null) {

@@ -45,6 +45,7 @@ public class MainDataGenerator {
 
 		
 		try {
+
 			DataGenerator DataGenIns = RepositoryItemGenerator.class.newInstance() ;
 			
 			System.out.println("is configured" + DataGenIns.isConfigured());
@@ -59,7 +60,7 @@ public class MainDataGenerator {
 			File file = new File("C:\\Users\\FAYCAL\\Documents\\project\\filename2.txt");
 
 			DataGenerator productGen = createCatalog ();
-			DataGeneratorBuilder.build(productGen, file);
+			DataGeneratorBuilder.generateAll(productGen, file);
 
 	}
 
