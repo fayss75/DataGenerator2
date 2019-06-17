@@ -1,6 +1,7 @@
 package fr.fayss.datagenerator.configurator;
 
-import fr.fayss.datagenerator.atg.xml.DataConfig;
+
+import fr.fayss.datagenerator.factory.xml.DataConfig;
 
 public class Exemple {
 

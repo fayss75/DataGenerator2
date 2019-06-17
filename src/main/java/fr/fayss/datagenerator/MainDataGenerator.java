@@ -60,7 +60,7 @@ public class MainDataGenerator {
 			File file = new File("C:\\Users\\FAYCAL\\Documents\\project\\filename2.txt");
 
 			DataGenerator productGen = createCatalog ();
-			DataGeneratorBuilder.generateAll(productGen, file);
+			DataGeneratorBuilder.getInstance().generateAll(productGen, file);
 
 	}
 

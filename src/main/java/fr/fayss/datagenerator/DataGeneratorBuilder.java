@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.fayss.datagenerator;
 
 import java.io.BufferedWriter;
@@ -15,13 +12,54 @@ import java.io.IOException;
 public class DataGeneratorBuilder {
 
 
+	private static DataGeneratorBuilder dataGeneratorBuilder;
+
+
+	public static DataGeneratorBuilder getInstance () {
+		if (dataGeneratorBuilder == null){
+			dataGeneratorBuilder = new DataGeneratorBuilder ();
+		}
+		return dataGeneratorBuilder ;
+	}
+
+
+	private DataGeneratorBuilder () {
+	}
+
+
+
+	public String generateAll (DataGenerator pDataGenerator) {
+
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(pDataGenerator.generate());
+
+		GenerationBuffer generationBuffer =
+				GenerationBuffer.getInstance();
+
+		while (generationBuffer.hasNext()){
+
+			DataConfiguration config = generationBuffer.popItem();
+
+			try {
+				DataConfigurationTools.configure(config);
+			} catch (PropertyConfigurationException pce) {
+				throw new InternalException (pce);
+			}
+
+			sb.append((config.getDataGenerator()).generate());
+		}
+
+		return sb.toString();
+	}
 
 	/**
 	 * Execute the data generator and write the result in the output file
 	 * @param pDataGenerator the generator to execute
 	 * @param pOutputFile the output file 
 	 */
-	public static void generateAll(DataGenerator pDataGenerator, File pOutputFile) {
+	public void generateAll(DataGenerator pDataGenerator, File pOutputFile) {
 
 		GenerationBuffer generationBuffer =
 				GenerationBuffer.getInstance();

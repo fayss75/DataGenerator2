@@ -81,7 +81,7 @@ public class AtgTemplateGenerator {
 			
 			File file = new File(folder_Path+"AtgTemplateGenerator.txt");
 			
-			DataGeneratorBuilder.generateAll(maindataGen, file);
+			DataGeneratorBuilder.getInstance().generateAll(maindataGen, file);
 			
 
 		} catch (DataConfigException | IOException e) {

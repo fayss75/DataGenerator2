@@ -3,10 +3,7 @@
  */
 package fr.fayss.datagenerator;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author fayss
@@ -15,11 +12,10 @@ import java.util.Queue;
  */
 public class GenerationBuffer {
 
-
-	private Queue<DataConfiguration> mDataConfiguration;
 	private static GenerationBuffer mGenerationBuffer ;
 
-	private static Map <String,Object> mDatas;
+	private Queue<DataConfiguration> mDataConfiguration;
+	private Map <String,Object> mDatas;
 
 	public static GenerationBuffer getInstance () {
 
@@ -62,6 +58,7 @@ public class GenerationBuffer {
 	public boolean hasNext () {
 		return ! mDataConfiguration.isEmpty();
 	}
+
 
 	public void clear () {
 		mDatas.clear();
