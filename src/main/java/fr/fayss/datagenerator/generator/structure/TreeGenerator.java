@@ -67,7 +67,7 @@ public @Getter @Setter class TreeGenerator implements DataGenerator<String> {
 			Integer currentChild =(Integer)getgenerationBuffer().getData(POSITION_PREFIX);
 
 
-			if (currentChild ==  Math.pow(mNbChild, mDepth - currentDepth 	) ){
+			if (currentChild ==  Math.pow( mNbChild, mDepth - currentDepth 	) ){
 				getgenerationBuffer().setData(CURRENT_DEPTH_PREFIX, currentDepth - 1);
 				getgenerationBuffer().setData(POSITION_PREFIX, 1);
 			} else {

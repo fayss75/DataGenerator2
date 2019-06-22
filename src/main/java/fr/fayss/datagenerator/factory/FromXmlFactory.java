@@ -34,31 +34,22 @@ public class FromXmlFactory implements FromGenericFactory {
 		return parseFile (new File( pXmlFilePath));
 	}
 
-	public void saveDataConfig(DataConfig pDataConfig, File pFile) throws DataConfigException{
-		OutputStream os = null ;
-		try {
+	public void saveDataConfig(DataConfig pDataConfig, File pFile) throws DataConfigException {
+
+		try (OutputStream os = new FileOutputStream(pFile)) {
 			JAXBContext jc = JAXBContext.newInstance(XML_BINDING_PACKAGE);
 			Marshaller marshaller = jc.createMarshaller();
 
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			os = new FileOutputStream( pFile );
 
-			marshaller.marshal( pDataConfig, os );
-		} catch (JAXBException | FileNotFoundException e) {
-			throw new DataConfigException (e);
-		} finally {
-			if (os != null) {
-				try {
-					os.close();
-				} catch (IOException e) {
-					throw new DataConfigException (e);
-				}
-			}
+			marshaller.marshal(pDataConfig, os);
+		} catch (JAXBException | IOException e) {
+			throw new DataConfigException(e);
 		}
 	}
 
-	public void saveDataConfig(DataConfig pDataConfig, String pFilePath) throws DataConfigException {
+		public void saveDataConfig(DataConfig pDataConfig, String pFilePath) throws DataConfigException {
 		File file = new File(pFilePath) ;
 		saveDataConfig(pDataConfig, file);
 	}

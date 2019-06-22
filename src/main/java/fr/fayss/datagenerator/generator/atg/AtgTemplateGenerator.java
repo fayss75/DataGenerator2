@@ -14,6 +14,7 @@ import fr.fayss.datagenerator.DataGeneratorBuilder;
 import fr.fayss.datagenerator.factory.xml.DataConfig;
 import fr.fayss.datagenerator.factory.xml.PropertyConfig;
 import fr.fayss.datagenerator.factory.xml.PropertyValue;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 
 import fr.fayss.datagenerator.DataGenerator;
@@ -23,15 +24,17 @@ import fr.fayss.datagenerator.factory.DataGeneratorFactory;
 
 import static fr.fayss.datagenerator.DataConfigurationTools.*;
 
+@Log4j2
 public class AtgTemplateGenerator {
+
 
 
 	private  Map<String, DataGenerator> dataGenMap  = new HashMap ();
 	private String mainGeneratorId ;
 
 
-	private static final String folder_Path = "C:\\Users\\Picsou\\Documents\\Projects\\";
-	private static final String File_Path =folder_Path+"DataGenerator2\\src\\main\\resources\\configurationTest\\Config.xml" ;
+	private static final String FOLDER_PATH = "C:\\Users\\Picsou\\Documents\\Projects\\";
+	private static final String FILE_PATH = FOLDER_PATH +"DataGenerator2\\src\\main\\resources\\configurationTest\\Config.xml" ;
 
 	
 	
@@ -51,11 +54,11 @@ public class AtgTemplateGenerator {
 
 		try {
 
-			DataConfig dataconfig = DataGeneratorFactory.parseFile(File_Path, DataGeneratorFactory.SourceType.XML) ;
+			DataConfig dataconfig = DataGeneratorFactory.parseFile(FILE_PATH, DataGeneratorFactory.SourceType.XML) ;
 
 			System.out.println(dataconfig.getName());
 
-			YamlWriter writer = new YamlWriter(new FileWriter(folder_Path+"output.yml"));
+			YamlWriter writer = new YamlWriter(new FileWriter(FOLDER_PATH +"output.yml"));
 			writer.write(dataconfig);
 			writer.close();
 
@@ -64,13 +67,13 @@ public class AtgTemplateGenerator {
 
 
 //Object to JSON in file
-			mapper.writeValue(new File(folder_Path+"file.json"), dataconfig);
+			mapper.writeValue(new File(FOLDER_PATH +"file.json"), dataconfig);
 
 
 
 			AtgTemplateGenerator templateGen = AtgTemplateGenerator.getInstance();
 
-			templateGen.generateTemplatefromXml (new File (File_Path));
+			templateGen.generateTemplatefromXml (new File (FILE_PATH));
 			Map<String, DataGenerator> dataGenMap = templateGen.getDataGenMap() ;
 
 			System.out.println(dataGenMap);
@@ -78,13 +81,13 @@ public class AtgTemplateGenerator {
 			DataGenerator maindataGen = dataGenMap.get(templateGen.getMainGeneratorId());
 			
 			
-			File file = new File(folder_Path+"AtgTemplateGenerator.txt");
+			File file = new File(FOLDER_PATH +"AtgTemplateGenerator.txt");
 			
 			DataGeneratorBuilder.getInstance().generateAll(maindataGen, file);
 			
 
 		} catch (DataConfigException | IOException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 
@@ -203,7 +206,7 @@ public class AtgTemplateGenerator {
 			}
 
 		} catch (DataConfigException | ClassNotFoundException | InstantiationException | IllegalAccessException | PropertyConfigurationException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 
 	}

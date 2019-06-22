@@ -28,7 +28,7 @@ public  class DataConfiguration {
 
 	/** Constructor */
 	public DataConfiguration () {
-		mPropertyConfigMap = new HashMap<String, Object>() ;
+		mPropertyConfigMap = new HashMap() ;
 	}
 
 	/**

@@ -80,12 +80,12 @@ public class DataGeneratorBuilder {
 		GenerationBuffer generationBuffer =
 				GenerationBuffer.getInstance();
 		Writer bw = null;
-		try {
-			if (!pOutputFile.exists()) {
-				pOutputFile.createNewFile();
-			}
 
-			FileWriter fw = new FileWriter(pOutputFile.getAbsoluteFile());
+		try (FileWriter fw = new FileWriter(pOutputFile.getAbsoluteFile())){
+
+
+			Boolean newsFile = pOutputFile.createNewFile();
+
 			bw = new BufferedWriter(fw);
 
 			for (DataGenerator dataGenerator : pDataGenerators)
@@ -108,14 +108,6 @@ public class DataGeneratorBuilder {
 			}
 		} catch (IOException ioe) {
 			throw new InternalException (ioe);
-		} finally {
-			generationBuffer.clear();
-			try {
-				if (bw != null)
-					bw.close();
-			} catch (IOException ioe) {
-				throw new InternalException (ioe);
-			}
 		}
 
 	}
