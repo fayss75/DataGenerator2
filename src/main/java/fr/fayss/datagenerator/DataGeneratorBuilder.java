@@ -1,9 +1,8 @@
 package fr.fayss.datagenerator;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author fayss
@@ -27,13 +26,16 @@ public class DataGeneratorBuilder {
 	}
 
 
-
-	public String generateAll (DataGenerator pDataGenerator) {
+	public String generateAll (DataGenerator ... pDataGenerators  ) {
 
 
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(pDataGenerator.generate());
+		for (DataGenerator  dataGenerator : pDataGenerators )  {
+
+			sb.append(dataGenerator.generate());
+		}
+
 
 		GenerationBuffer generationBuffer =
 				GenerationBuffer.getInstance();
@@ -57,13 +59,27 @@ public class DataGeneratorBuilder {
 	/**
 	 * Execute the data generator and write the result in the output file
 	 * @param pDataGenerator the generator to execute
-	 * @param pOutputFile the output file 
+	 * @param pOutputFile the output file
 	 */
-	public void generateAll(DataGenerator pDataGenerator, File pOutputFile) {
+	public void generateAll(DataGenerator  pDataGenerator  , File pOutputFile) {
+
+		List <DataGenerator>  dataGenerators = new ArrayList () ;
+
+		dataGenerators.add(pDataGenerator) ;
+
+		generateAll(dataGenerators  ,  pOutputFile) ;
+	}
+
+	/**
+	 * Execute the data generator and write the result in the output file
+	 * @param pDataGenerators the generator to execute
+	 * @param pOutputFile the output file
+	 */
+	public void generateAll(List <DataGenerator>  pDataGenerators  , File pOutputFile) {
 
 		GenerationBuffer generationBuffer =
 				GenerationBuffer.getInstance();
-		BufferedWriter bw = null;
+		Writer bw = null;
 		try {
 			if (!pOutputFile.exists()) {
 				pOutputFile.createNewFile();
@@ -71,7 +87,9 @@ public class DataGeneratorBuilder {
 
 			FileWriter fw = new FileWriter(pOutputFile.getAbsoluteFile());
 			bw = new BufferedWriter(fw);
-			bw.write(pDataGenerator.generate().toString());
+
+			for (DataGenerator dataGenerator : pDataGenerators)
+				bw.write(dataGenerator.generate().toString());
 
 
 			// check if any dataconfiguratione exist in the buffer,

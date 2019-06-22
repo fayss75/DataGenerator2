@@ -8,9 +8,9 @@ import java.io.File;
 public interface FromGenericFactory {
 
 
-	DataConfig parseFile(File pXmlFile) throws DataConfigException;
+	DataConfig parseFile(File pFile) throws DataConfigException;
 
-	DataConfig parseFile(String pXmlFilePath) throws DataConfigException;
+	DataConfig parseFile(String pFilePath) throws DataConfigException;
 
 	void saveDataConfig(DataConfig pDataConfig, File pFile) throws DataConfigException;
 
